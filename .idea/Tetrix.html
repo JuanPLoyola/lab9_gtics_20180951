@@ -2,50 +2,39 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $(document).ready(function (){
-        function crearTablero(row,cols){
-            let tablero = new Array(rows);
+        const SQUARE_LENGTH = 30;
+        const COLUMNS = 12;
+        const ROWS = 12;
 
-            for(let i = 0; i < rows; ++i) {
-                tablero[ i ] = new Array( cols ).fill( 0 );
+        const canvas = document.getElementById('board');
+        const ctx = canvas.getContext('2d');
+
+        ctx.canvas.width = COLS * BLOCK_SIZE;
+        ctx.canvas.height = ROWS * BLOCK_SIZE;
+        ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
+
+        class tablero{
+            constructor(ctx) {
+                this.ctx = ctx;
+                this.grid = this.tableroVacio()
+
             }
 
-            return tablero;
+            tableroVacio(){
+                return Array.from({length: ROWS}, () => Array(COLUMNS).fill(0))
+            }
+        }
+
+        function init(){
+            tabla = new tablero(ctx);
+            console.table(board.grid)
+        }
+        function generarfiguras(cantidad){
+            for(i>0;i<=cantidad;i++){
+
+            }
         }
     });
-
-    var SQUARE_LENGTH = screen.width > 420 ? 30 : 20;
-    var COLUMNS = 12;
-    var ROWS = 12;
-    var CANVAS_WIDTH = this.SQUARE_LENGTH * this.COLUMNS;
-    var CANVAS_HEIGHT = this.SQUARE_LENGTH * this.ROWS;
-
-   function init(){
-        this.draw();
-    }
-    function draw() {
-        let x = 0, y = 0;
-        for (const row of this.board) {
-            x = 0;
-            for (const point of row) {
-                this.canvasContext.fillStyle = point.color;
-                this.canvasContext.fillRect(x, y, Game.SQUARE_LENGTH, Game.SQUARE_LENGTH);
-                this.canvasContext.restore();
-                this.canvasContext.strokeStyle = Game.BORDER_COLOR;
-                this.canvasContext.strokeRect(x, y, Game.SQUARE_LENGTH, Game.SQUARE_LENGTH);
-                x += Game.SQUARE_LENGTH;
-            }
-            y += Game.SQUARE_LENGTH;
-        }
-        setTimeout(() => {
-            requestAnimationFrame(this.draw.bind(this));
-        }, 17)
-    }
-
-    function generarfiguras(cantidad){
-       for(i>0;i<=cantidad;i++){
-
-       }
-    }
 
 
 
