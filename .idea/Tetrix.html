@@ -1,0 +1,61 @@
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function (){
+        function crearTablero(row,cols){
+            let tablero = new Array(rows);
+
+            for(let i = 0; i < rows; ++i) {
+                tablero[ i ] = new Array( cols ).fill( 0 );
+            }
+
+            return tablero;
+        }
+    });
+
+    var SQUARE_LENGTH = screen.width > 420 ? 30 : 20;
+    var COLUMNS = 12;
+    var ROWS = 12;
+    var CANVAS_WIDTH = this.SQUARE_LENGTH * this.COLUMNS;
+    var CANVAS_HEIGHT = this.SQUARE_LENGTH * this.ROWS;
+    function draw() {
+        let x = 0, y = 0;
+        for (const row of this.board) {
+            x = 0;
+            for (const point of row) {
+                this.canvasContext.fillStyle = point.color;
+                this.canvasContext.fillRect(x, y, Game.SQUARE_LENGTH, Game.SQUARE_LENGTH);
+                this.canvasContext.restore();
+                this.canvasContext.strokeStyle = Game.BORDER_COLOR;
+                this.canvasContext.strokeRect(x, y, Game.SQUARE_LENGTH, Game.SQUARE_LENGTH);
+                x += Game.SQUARE_LENGTH;
+            }
+            y += Game.SQUARE_LENGTH;
+        }
+        setTimeout(() => {
+            requestAnimationFrame(this.draw.bind(this));
+        }, 17)
+    }
+
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab9</title>
+
+</head>
+<body>
+<div>Cantidad minima de cubos de hielo necesarios</div>
+<form name="Cantidadmin" method="post">
+    <input type="text" value="">
+</form>
+<div>Numero de figuras</div>
+<form name="numfiguras" method="post">
+    <input type="text" value="">
+</form>
+<button onclick='draw(12,12)'>Iniciar</button>
+</body>
+</html>
