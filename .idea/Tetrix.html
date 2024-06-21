@@ -18,6 +18,10 @@
     var ROWS = 12;
     var CANVAS_WIDTH = this.SQUARE_LENGTH * this.COLUMNS;
     var CANVAS_HEIGHT = this.SQUARE_LENGTH * this.ROWS;
+
+   function init(){
+        this.draw();
+    }
     function draw() {
         let x = 0, y = 0;
         for (const row of this.board) {
@@ -36,6 +40,13 @@
             requestAnimationFrame(this.draw.bind(this));
         }, 17)
     }
+
+    function generarfiguras(cantidad){
+       for(i>0;i<=cantidad;i++){
+
+       }
+    }
+
 
 
 </script>
@@ -56,6 +67,6 @@
 <form name="numfiguras" method="post">
     <input type="text" value="">
 </form>
-<button onclick='draw(12,12)'>Iniciar</button>
+<button onclick="init()">Iniciar</button>
 </body>
 </html>
